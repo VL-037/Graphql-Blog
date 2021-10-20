@@ -16,6 +16,12 @@ module.exports.resolvers = {
         getBlogById: async (parents, args, context, info) => {
             const BlogId = args.id
             return await Blog.findById(BlogId).populate('author')
+        },
+        getBlogsByAuthorId: async (parents, args, context, info) => {
+            const user = await User.findById(args.authorId)
+            const blogs = await Blog.find({ author: { _id: user.id}}).populate('author')
+            console.log(blogs)
+            return blogs
         }
     },
 
