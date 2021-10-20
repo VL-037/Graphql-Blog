@@ -38,6 +38,10 @@ module.exports.typeDefs = gql`
         description: String
     }
 
+    input UserUpdateInput {
+        description: String
+    }
+
     type Blog {
         id: ID!
         title: String!
@@ -53,6 +57,11 @@ module.exports.typeDefs = gql`
         userId: ID!
     }
 
+    input BlogUpdateInput {
+        title: String
+        body: String
+    }
+
     type Query {
         getUsers: [User]!
         getUserById(id: ID!): User!
@@ -63,7 +72,11 @@ module.exports.typeDefs = gql`
 
     type Mutation {
         createUser(user: UserInput!): User!
+        updateUser(id: ID!, user: UserUpdateInput!): User!
+        deleteUser(id: ID!): String!
 
         createBlog(blog: BlogInput!): Blog!
+        updateBlog(id: ID!, blog: BlogUpdateInput!): Blog!
+        deleteBlog(id: ID!): String!
     }
 `
