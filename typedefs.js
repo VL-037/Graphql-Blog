@@ -65,6 +65,7 @@ module.exports.typeDefs = gql`
     type Query {
         getUsers: [User]!
         getUserById(id: ID!): User!
+        getBlogsByAuthorId(authorId: ID!): [Blog]!
 
         getBlogs: [Blog]!
         getBlogById(id: ID!): Blog!
